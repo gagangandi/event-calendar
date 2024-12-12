@@ -3,7 +3,7 @@ import './Calender.css';
 import { CalendarContext } from './CalendarContext';
 
 const Calendar = () => {
-  const { currentDate, setCurrentDate, selectedDate, setSelectedDate } = useContext(CalendarContext);
+  const { currentDate, setCurrentDate, selectedDate, setSelectedDate, events } = useContext(CalendarContext);
 
   const getMonthDays = (year, month) => {
     const date = new Date(year, month, 1);
@@ -32,6 +32,27 @@ const Calendar = () => {
     setSelectedDate(date);
     localStorage.setItem('selectedDate', date.toISOString());
   };
+
+  const downloadEvents = () => {
+    // download events of this month
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    let monthEvents = {};
+    for(let key in events){
+      if(new Date(key).getMonth() === month && new Date(key).getFullYear() === year){
+        monthEvents[key] = events[key];
+      }
+    }
+    const filename = `${year}-${month}-events.json`;
+    const data = JSON.stringify(monthEvents);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const year = currentDate.getFullYear();
@@ -67,9 +88,10 @@ const Calendar = () => {
             </div>
           ))}
         </div>
-        <div className="monthly-schedule">
-          <span>Hello</span>
-        </div>
+      </div>
+      <div className="monthly-schedule">
+          {/* add a button to download the events */}
+          <button onClick={downloadEvents}>Download Events</button>
       </div>
     </div>
   );

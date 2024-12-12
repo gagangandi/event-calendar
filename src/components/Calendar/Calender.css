@@ -2,7 +2,8 @@
     /* display: flex; */
     gap: 20;
     justify-content: space-between;
-    /* border: 1px solid black; */
+    border: 1px solid black;
+    margin-left: 20px;
   }
   
   .calendar {
@@ -36,7 +37,6 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     padding: none;
-    height: 40px;
   }
   
   .day-name {

@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CalendarContext } from '../Calendar/CalendarContext';
 import EventItem from '../EventItem/EventItem';
 import './EventsPanel.css';
+import SearchEvents from '../SearchEvents/SearchEvents';
 
 const EventsPanel = () => {
   const {
@@ -13,7 +14,8 @@ const EventsPanel = () => {
     isFormVisible,
     setIsFormVisible,
   } = useContext(CalendarContext);
-
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  
   const handleAddEvent = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,9 +23,10 @@ const EventsPanel = () => {
     const startTime = form.startTime.value;
     const endTime = form.endTime.value;
     const description = form.description.value;
+    const eventType = form.eventType.value;
 
     if (name && startTime && endTime) {
-      const newEvent = { name, startTime, endTime, description: description || '' };
+      const newEvent = { name: name, startTime: startTime, endTime: endTime, description: description, eventType: eventType };
 
       setEvents((prev) => {
         const dateKey = selectedDate.toDateString();
@@ -53,7 +56,15 @@ const EventsPanel = () => {
 
   return (
     <div className="events-panel">
-      {selectedDate ? (
+      <SearchEvents setSelectedEvent={setSelectedEvent}/>
+      {selectedEvent && <div>
+        <ul>
+            {(events[selectedDate.toDateString()] || []).filter((event)=>event.name===selectedEvent.name).map((event, index) => (
+              <EventItem key={index} index={index} />
+            ))}
+        </ul>
+      </div>}
+      {!selectedEvent && selectedDate ? (
         <div>
           <div className="events-panel-header">
             <h3>Events on {selectedDate.toDateString()}</h3>
@@ -66,6 +77,11 @@ const EventsPanel = () => {
               <input type="text" name="name" placeholder="Event Name" required />
               <input type="time" name="startTime" required />
               <input type="time" name="endTime" required />
+              <select name="eventType">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="others">Others</option>
+              </select>
               <textarea name="description" placeholder="Optional Description"></textarea>
               <button type="submit">{editIndex !== null ? 'Update' : 'Add'}</button>
             </form>
@@ -77,9 +93,7 @@ const EventsPanel = () => {
             ))}
           </ul>
         </div>
-      ) : (
-        <p>Select a day to view or add events.</p>
-      )}
+      ) : ( !selectedEvent && <p>Select a day to view or add events.</p>)}
     </div>
   );
 };

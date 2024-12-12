@@ -1,14 +1,26 @@
-.event-item {
-    padding: 10px;
-    border-left: 3px solid darkviolet;
-    border-right: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    border-top: 1px solid #ddd;
-    margin: 3px;
-}
 
 .event-name {
     display: flex;
     justify-content: space-between;
 }
+
+.work {
+    border-left: 3px solid red;
+}
+
+.personal {
+    border-left: 3px solid green;
+}
   
+.others {
+    border-left: 3px solid yellow;
+}
+
+.event-item {
+    padding: 10px;
+    /* border-left: 3px solid darkviolet; */
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    margin: 3px;
+}
