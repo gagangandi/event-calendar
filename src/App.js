@@ -1,14 +1,19 @@
 import './App.css';
 import Calender from './components/Calendar/Calender';
 import Navbar from './components/Navbar/Navbar';
-import EventsPanel from './components/Events-panel/Events-panel';
+import EventsPanel from './components/EventsPanel/EventsPanel';
+import { CalendarProvider } from './components/Calendar/CalendarContext';
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <Calender/>
-      {/* <EventsPanel/> */}
+      <CalendarProvider>
+        <Navbar />
+        <div className="calendar-events-container">
+          <Calender />
+          <EventsPanel />
+        </div>
+      </CalendarProvider>
     </div>
   );
 }

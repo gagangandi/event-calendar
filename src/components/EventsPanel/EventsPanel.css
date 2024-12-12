@@ -1,0 +1,43 @@
+.events-panel {
+    width: 600px;
+    border: 1px solid black;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.events-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: none;
+}
+
+.events-panel h3 {
+    margin-top: 0;
+}
+
+.events-panel ul {
+    padding: 0;
+    list-style: none;
+}
+
+.events-panel form {
+    margin-top: 10px;
+}
+
+.events-panel input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.events-panel button {
+    padding: 5px;
+}
+
+.event-item strong {
+    color: #333;
+}

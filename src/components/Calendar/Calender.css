@@ -1,35 +1,53 @@
 .calendar-container {
-    display: flex;
+    /* display: flex; */
     gap: 20;
     justify-content: space-between;
+    /* border: 1px solid black; */
   }
   
   .calendar {
-    margin: 0 40px;
+    margin: 1px 20px;
     width: 300px;
     text-align: center;
     font-family: Arial, sans-serif;
+    /* border: 1px solid black; */
+    padding: 10px;
   }
   
   .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
   }
   
-  .calendar-days-of-week,
+  .calendar-header h2 {
+    margin: 0;
+  }
+
+  .calendar-days-of-week{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: none;
+    height: 40px;
+    margin-top: 10px;
+  }
+
   .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    padding: none;
+    height: 40px;
   }
   
   .day-name {
     width: 40px;
-    padding: 10px;
+    padding: none;
     border: 1px solid #ddd;
     box-sizing: border-box;
     cursor:default;
+    align-items: center;
+    justify-content: center;
+    display: grid;
   }
 
   .calendar-day {
@@ -59,60 +77,10 @@
     font-weight: bold;
   }
   
-  .events-panel {
-    /* flex-grow: 1; */
-    width: 600px;
-    border: 1px solid #ddd;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-  }
-  
-  .events-panel h3 {
-    margin-top: 0;
-  }
-  
-  .events-panel ul {
-    padding: 0;
-    list-style: none;
-  }
-  
-  .events-panel form {
-    margin-top: 10px;
-  }
-  
-  .events-panel input {
-    padding: 5px;
-    margin-right: 10px;
-  }
-  
-  .events-panel button {
-    padding: 5px;
-  }
-
-  .event-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-  }
-  
-  .event-item strong {
-    color: #333;
-  }
-  
   form textarea {
     width: 100%;
     resize: none;
     margin-top: 5px;
     margin-bottom: 10px;
-  }
-
-  .events-panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
   }
   
