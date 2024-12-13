@@ -5,7 +5,6 @@
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     align-items: center;
-    margin-right: 10px;
 }
 
 .events-panel-header {
@@ -41,4 +40,11 @@
 .event-item strong {
     color: #333;
 }
-
+.search-and-events-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    margin-right: 20px;
+}

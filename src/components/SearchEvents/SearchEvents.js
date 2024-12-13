@@ -22,7 +22,7 @@ export default function SearchEvents({setSelectedEvent}) {
             options={eventList}
             getOptionLabel={(option) => option.name}
             sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="name" />}
+            renderInput={(params) => <TextField {...params} label="search" />}
             onChange={(event, option) => {setSelectedEvent(option); console.log(option)}}
         />}
     </div>

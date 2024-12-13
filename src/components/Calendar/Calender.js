@@ -43,7 +43,7 @@ const Calendar = () => {
         monthEvents[key] = events[key];
       }
     }
-    const filename = `${year}-${month}-events.json`;
+    const filename = `${year}-${month+1}-events.json`;
     const data = JSON.stringify(monthEvents);
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -90,8 +90,7 @@ const Calendar = () => {
         </div>
       </div>
       <div className="monthly-schedule">
-          {/* add a button to download the events */}
-          <button onClick={downloadEvents}>Download Events</button>
+          <button onClick={downloadEvents}>Download Events for this month</button>
       </div>
     </div>
   );
